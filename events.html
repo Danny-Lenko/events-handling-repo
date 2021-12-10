@@ -10,7 +10,26 @@
       img { margin: 20px; }
    </style>
    <script>
-      
+      window.onload = init;
+      function init() {
+         let images = document.getElementsByTagName('img');
+         for (let i = 0; i < images.length; i++) {
+            images[i].onclick = showOriginalPicture;
+         }
+      }
+      function showOriginalPicture(e) {
+         let object = e.target;
+         let name = object.id;
+         name = name + '.jpg';
+         object.src = 'img/' + name;
+
+         setTimeout(reblur, 2000, object);
+      }
+      function reblur(object) {
+         let name = object.id;
+         name = name + 'blur.jpg';
+         object.src = 'img/' + name;
+      }
    </script>
 </head>
 <body>
