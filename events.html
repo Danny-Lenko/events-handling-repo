@@ -14,7 +14,8 @@
       function init() {
          let images = document.getElementsByTagName('img');
          for (let i = 0; i < images.length; i++) {
-            images[i].onclick = showOriginalPicture;
+            images[i].onmouseover = showOriginalPicture;
+            images[i].onmouseout = reblur;
          }
       }
       function showOriginalPicture(e) {
@@ -22,10 +23,9 @@
          let name = object.id;
          name = name + '.jpg';
          object.src = 'img/' + name;
-
-         setTimeout(reblur, 2000, object);
       }
-      function reblur(object) {
+      function reblur(e) {
+         let object = e.target;
          let name = object.id;
          name = name + 'blur.jpg';
          object.src = 'img/' + name;
